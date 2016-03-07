@@ -1,0 +1,80 @@
+.toggle_radio{
+  position: relative;
+  background: #ffffff;
+  margin: 4px auto;
+  overflow: hidden;
+  padding: 0 !important;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 8px;
+  position: relative;
+  height: 30px;
+  width: 300px;
+}
+.toggle_radio > * {
+  float: left;
+}
+.toggle_radio input[type=radio]{
+  display: none;
+/*   position: fixed; */
+}
+.toggle_radio label{
+  
+  color: rgba(0,0,0,.9);
+  z-index: 0;
+  display: block;
+  width: 75px;
+  height: 30px;
+  margin: 0px 0px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1;
+/*   line-height:100px; */
+  /*background: rgba(0,0,0,.1);*/
+  text-align: center;
+  /*margin: 0 2px;*/
+  /*background: blue;*/ /*make it blue*/
+}
+.toggle_option_slider{
+  /*display: none;*/
+  /*background: red;*/
+  width: 75px;
+  height: 30px;
+  position: absolute;
+  top: 0px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 8px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+#first_toggle:checked ~ .toggle_option_slider{
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 2px rgba(0,159,218, 1) inset;
+  left: 0px;
+}
+#second_toggle:checked ~ .toggle_option_slider{
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 2px rgba(0,159,218, 1) inset;
+  left: 75px;
+}
+#third_toggle:checked ~ .toggle_option_slider{
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 2px rgba(0,159,218, 1) inset;
+  left: 150px;
+}
+#fourth_toggle:checked ~ .toggle_option_slider{
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 2px rgba(0,159,218, 1) inset;
+  left: 225px;
+}
+p.day {
+    line-height: 30px;
+    font-size: 1em;
+}

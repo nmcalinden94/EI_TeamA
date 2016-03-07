@@ -1,0 +1,8 @@
+.take-all-space-you-can{
+    width:50%;
+}
+
+.progress.active .progress-bar {
+    -webkit-transition: width 12s ease-in-out 0s; 
+    transition: width 12s ease-in-out 0s;
+}

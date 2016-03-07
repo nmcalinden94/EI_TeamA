@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html class="bg-white">
+<head>
+    <meta charset="UTF-8">
+    <title>Electric Ireland | Registration</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- bootstrap 3.0.2 -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- font Awesome -->
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="../../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="bg-white">
+    <form name="registerForm" action="registerUser.php" method="post">
+        <div class="form-box" id="login-box">
+            <a class="image">
+                <div style="text-align: center">
+                    <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                    <img src="../../img/ElectricIreland/brand_logo_large.jpg" height="100" width="240" />
+                </div>
+            </a>
+            <p id="smarterLiving"><b>Smarter Living</b></p>
+            <div class="body bg-gray">
+                <h3><font color="009FDA">Register</font></h3>
+                <div class="form-group">
+                    <input id="accountInput" name="register_AccountID" type="text" class="form-control" placeholder="Account Number" onkeypress="return isNumber(event)" />
+                </div>
+                <p id="accountError"></p>  
+                <div class="form-group">
+                    <input id="mprnInput" name="register_MPRN" type="text" class="form-control" placeholder="MPRN" onkeypress="return isNumber(event)" />
+                </div>
+                <p id="mprnError"></p>
+                <div class="form-group">
+                    <input id="passwordInput" type="password" name="register_Password" class="form-control" placeholder="Password" />
+                </div>
+                <p id="passwordError"></p>
+                <div class="form-group">
+                    <input id="confirmPasswordInput" type="password" name="register_ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                </div>
+                <p id="confirmPasswordError"></p>
+            </div>
+            <div class="footer">
+                <button id="registerButton" type="submit" class="btn bg-el-green btn-block">Register</button>
+                <a href="../../login.html" class="text-center">I already have a membership</a>
+            </div>
+            <br />
+        </div>
+      </form>
+
+        <script type="text/javascript">
+            function validateForm() {
+                var a = document.getElementById("accountInput").value;
+                var m = document.getElementById("mprnInput").value;
+                var p = document.getElementById("passwordInput").value;
+                var cp = document.getElementById("confirmPasswordInput").value;
+                var passwordNumberRe = /[0-9]/;
+                var passwordLcRe = /[a-z]/;
+                var passwordUcRe = /[A-Z]/;
+                var accountValid, mrpnValid, passwordValid, cPasswordValid;
+
+                    if (a == "" || a == null || a.length <6) {
+                        accountErrorText = "Please enter an account number, with a minimum of 6 digits";
+                        document.getElementById("accountError").innerHTML = accountErrorText;
+                    }
+
+                    else if (a != "" || a != null) {
+                        document.getElementById("accountError").innerHTML = "";
+                        accountValid = true;
+                    }
+
+                    if (m == "" || m == null || m.length !=11 ) {
+                        mprnErrorText = "Please enter your 11 digit MPRN Number";
+                        document.getElementById("mprnError").innerHTML = mprnErrorText;
+                    }
+
+                    else if (m != "" || m != null) {
+                        document.getElementById("mprnError").innerHTML = "";
+                        mrpnValid = true;
+                    }
+
+                    if (p == "" || p == null) {
+                        passwordErrorText = "Please enter an password";
+                        document.getElementById("passwordError").innerHTML = passwordErrorText;
+                    }
+                    
+                    else if (p != "" || p != null) {
+                        if (!passwordNumberRe.test(p)) {
+                            document.getElementById("passwordError").innerHTML = "Password must contain at least 1 number";
+                        }
+                        else if (!passwordLcRe.test(p)) {
+                            document.getElementById("passwordError").innerHTML = "Password must contain at least 1 lowercase letter";
+                        }
+                        else if (!passwordUcRe.test(p)) {
+                            document.getElementById("passwordError").innerHTML = "Password must contain at least 1 uppercase letter";
+                        }
+                        else if (p.length<6) {
+                            document.getElementById("passwordError").innerHTML = "Password must contain at least 6 digits";
+                        }
+                        else {
+                            document.getElementById("passwordError").innerHTML = "";
+                            passwordValid = true;
+                        }
+                    }
+
+
+                   if (cp != "" || cp != null) {
+                        if (cp != p) {
+                            document.getElementById("confirmPasswordError").innerHTML = "Please make sure your passwords match";
+                        }
+                        else {
+                            document.getElementById("confirmPasswordError").innerHTML = "";
+                            cPasswordValid = true;
+                        }
+                   }
+
+                    if (accountValid==true && mrpnValid == true && passwordValid == true  && cPasswordValid==true ) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                
+            }
+
+            function isNumber(evt) {
+                evt = (evt) ? evt : window.event;
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            };
+        </script>
+        <!-- jQuery 2.0.2 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="./../js/bootstrap.min.js" type="text/javascript"></script>
+</body>
+</html>
